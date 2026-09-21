@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeniBrain AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #202124;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: #666;
+    }
+
+    .creator {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .chat-box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      resize: vertical;
+      outline: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .ask {
+      background: #222;
+      color: white;
+    }
+
+    .upload {
+      background: #eee;
+    }
+
+    #answer {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f3f5;
+      border-radius: 12px;
+      min-height: 50px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🧠 GeniBrain AI</h1>
+    <p>Learn • Understand • Discover</p>
+    <div class="creator">Founded by Ayush</div>
+  </header>
+
+  <main>
+
+    <div class="welcome">
+      <h2>How can I help you?</h2>
+      <p>Ask about academics, general knowledge, problem solving and more.</p>
+    </div>
+
+    <div class="chat-box">
+
+      <textarea id="question"
+        placeholder="Ask GeniBrain anything..."></textarea>
+
+      <div class="buttons">
+        <button class="ask" onclick="askGeniBrain()">Ask GeniBrain</button>
+
+        <button class="upload"
+          onclick="document.getElementById('fileInput').click()">
+          📎 Upload File
+        </button>
+
+        <input
+          id="fileInput"
+          type="file"
+          accept="image/*,video/*,.pdf,.txt"
+          hidden
+          onchange="showFile()">
+      </div>
+
+      <div id="answer">
+        Your answer will appear here.
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    GeniBrain AI © 2026 • Founded by Ayush
+  </footer>
+
+  <script>
+    function askGeniBrain() {
+      const question = document.getElementById("question").value.trim();
+      const answer = document.getElementById("answer");
+
+      if (!question) {
+        answer.innerHTML = "Please type a question first.";
+        return;
+      }
+
+      answer.innerHTML =
+        "GeniBrain is ready to answer: <b>" +
+        question.replace(/</g, "&lt;") +
+        "</b><br><br>" +
+        "The AI engine will be connected in the next step.";
+    }
+
+    function showFile() {
+      const file = document.getElementById("fileInput").files[0];
+
+      if (file) {
+        document.getElementById("answer").innerHTML =
+          "📎 File selected: <b>" + file.name + "</b><br>" +
+          "File upload is ready. AI file analysis will be added next.";
+      }
+    }
+  </script>
+
+</body>
+</html>
